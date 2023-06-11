@@ -1,0 +1,27 @@
+first we sell the stock after buying it only at first we need to buy so for the first index we will take it as buy and not as sell
+so we will check from second index - first index then check if it is max or not and update the max 
+we need to make a track of minimum number so that it will be easy to minus from the minimum buying stock for the particular selling price and if it is greater than max 
+we will update the max and return the max finally....
+
+
+
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution{
+    public static int maximumProfit(ArrayList<Integer> prices){
+        int max = 0;
+        int min = prices.get(0);
+        for (int i = 1; i < prices.size(); i++) {
+            int tempMax = prices.get(i) - min;
+            if(tempMax > 0){
+                if(max < tempMax){
+                    max = tempMax;
+                }
+            }
+            min = Math.min(min,prices.get(i));
+        }
+        return max;
+    }
+}
