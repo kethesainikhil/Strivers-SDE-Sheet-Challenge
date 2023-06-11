@@ -1,0 +1,46 @@
+this algorithm states that 
+form 0 ... low-1 all are zeroes
+from low ... mid-1 all are 1's
+from mid ... high all are unsorted 
+from high +1 .. n-1 all are 2's
+we need to change the mid to high values and set them in the correct order so we will use form mid to high 
+if it is 0 we will swap with low and low ++ and mid++;
+if it is 1 no need swap as it is already in the sorted order 
+it if is 2 we need to swap with high and high--;
+then finally the array is sorted
+
+
+
+
+
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+    public static void sort012(int[] arr)
+    {
+        int low = 0;
+        int mid = 0;
+        int high = arr.length-1;
+        while(mid <= high){
+            if(arr[mid] == 0){
+                swap(arr, low, mid);
+                low++;
+                mid++;
+            }
+            else if(arr[mid] == 1){
+                mid++;
+            }
+            else{
+                swap(arr, mid, high);
+                high--;
+        }
+    }
+
+}
+    public static void swap(int [] arr , int first, int second){
+        int temp = arr[first];
+        arr[first]  = arr[second];
+        arr[second] = temp;
+    }
+}
