@@ -1,0 +1,41 @@
+first find the max number in the given array
+then next step is to compare with the all other elements make sure to sum up the elements and compare parallely if the sum is greater than max replace that
+and if tempmax is less than zero then make it zero as we dont want the previous one that are negative...
+finally return by observing some edge cases like negative max or empty array in that case retun 0....
+
+
+
+
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+	
+	public static long maxSubarraySum(int[] arr, int n) {
+		long max = maxNumber(arr);
+		long tempMax = 0;
+		for (int i = 0; i < arr.length; i++) {
+			tempMax += arr[i];
+			if(tempMax < 0){
+				tempMax = 0;
+			}
+			if(tempMax > max){
+				max = tempMax;
+			}
+		}
+		if(max < 0 || arr.length == 0){
+			return 0;
+		}
+		return max;
+	}
+	public static long maxNumber(int [] arr){
+		int max = arr[0];
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i] > max){
+				max = arr[i];
+			}
+		}
+		return (long) max;
+	}
+
+}
